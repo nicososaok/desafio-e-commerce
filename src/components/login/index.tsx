@@ -25,7 +25,7 @@ export function LoginComponent() {
   return (
     <div className="max-w-md mx-auto p-8 bg-neutral-900 border border-neutral-800 rounded-2xl shadow-xl mt-12 text-white">
       <h2 className="text-2xl font-bold mb-6 text-center">Ingresar</h2>
-
+      
       {error && (
         <div className="bg-red-950/50 border border-red-800 text-red-200 text-sm p-3 rounded-lg mb-4">
           {error}
