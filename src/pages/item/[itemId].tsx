@@ -24,11 +24,11 @@ export default function ItemDetailPage() {
     }
   };
 
-  if (loading) return <div className="p-10 text-center">Cargando detalle...</div>;
+  if (loading) return <div className="p-10 text-center text-white">Cargando detalle...</div>;
   if (error || !product) return <div className="p-10 text-center text-red-500">{error || "Producto no encontrado"}</div>;
 
   return (
-    <div className="max-w-4xl mx-auto my-10 p-5">
+    <div className="max-w-4xl mx-auto my-10 p-5 text-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <img
           src={product.thumbnail}
@@ -37,7 +37,7 @@ export default function ItemDetailPage() {
         />
         <div>
           <h1 className="text-2xl font-bold mb-4">{product.title}</h1>
-          <p className="text-3xl font-bold text-green-600 mb-4">
+          <p className="text-3xl font-bold text-green-500 mb-4">
             ${product.price?.toLocaleString()}
           </p>
           {product.description && (
