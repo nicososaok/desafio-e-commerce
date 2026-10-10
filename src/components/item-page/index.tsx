@@ -1,7 +1,6 @@
-// components/item-page/index.tsx
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getProductById } from "@/styles/lib/api";
+import { getProductById } from "@/lib/api";
 import {
   ItemDetailLayout,
   ImageContainer,

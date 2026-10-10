@@ -1,31 +1,11 @@
-// pages/item/[itemId].tsx
-import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { getProductById } from "@/lib/api";
-import { Layout } from "@/components/layout";
-import { ItemPage } from "@/components/item-page";
-
-export default function Item() {
-  return (
-    <Layout>
-      <ItemPage />
-    </Layout>
-  );
-}
-
-interface ProductDetail {
-  id: string;
-  title: string;
-  price: number;
-  description?: string;
-  thumbnail: string;
-}
 
 export default function ItemDetailPage() {
   const router = useRouter();
   const { itemId } = router.query;
-
-  const [product, setProduct] = useState<ProductDetail | null>(null);
+  const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -44,45 +24,28 @@ export default function ItemDetailPage() {
     }
   };
 
-  if (loading) return <div style={{ padding: "40px", textAlign: "center" }}>Cargando detalle del producto...</div>;
-  if (error || !product) return <div style={{ padding: "40px", textAlign: "center", color: "red" }}>{error || "Producto no encontrado"}</div>;
+  if (loading) return <div className="p-10 text-center">Cargando detalle...</div>;
+  if (error || !product) return <div className="p-10 text-center text-red-500">{error || "Producto no encontrado"}</div>;
 
   return (
-    <div style={{ maxWidth: "800px", margin: "40px auto", padding: "20px" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "40px", alignItems: "start" }}>
-        {/* Imagen del Producto */}
+    <div className="max-w-4xl mx-auto my-10 p-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <img
           src={product.thumbnail}
           alt={product.title}
-          style={{ width: "100%", borderRadius: "8px", border: "1px solid #eee" }}
+          className="w-full rounded-lg border border-neutral-800"
         />
-
-        {/* Informacion y Boton de Compra */}
         <div>
-          <h1 style={{ fontSize: "24px", marginBottom: "16px" }}>{product.title}</h1>
-          <p style={{ fontSize: "28px", fontWeight: "bold", color: "#2e7d32", marginBottom: "24px" }}>
+          <h1 className="text-2xl font-bold mb-4">{product.title}</h1>
+          <p className="text-3xl font-bold text-green-600 mb-4">
             ${product.price?.toLocaleString()}
           </p>
-
           {product.description && (
-            <p style={{ color: "#555", lineHeight: "1.6", marginBottom: "30px" }}>
-              {product.description}
-            </p>
+            <p className="text-gray-400 mb-6">{product.description}</p>
           )}
-
           <button
             onClick={handleBuy}
-            style={{
-              width: "100%",
-              padding: "16px",
-              fontSize: "18px",
-              fontWeight: "bold",
-              color: "#fff",
-              backgroundColor: "#00a650", // Color verde Mercado Pago
-              border: "none",
-              borderRadius: "8px",
-              cursor: "pointer",
-            }}
+            className="w-full py-4 bg-green-600 hover:bg-green-700 text-white font-bold text-lg rounded-lg transition-colors cursor-pointer"
           >
             Comprar Ahora
           </button>
