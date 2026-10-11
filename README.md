@@ -1,5 +1,7 @@
 # 🛒 Desafío E-Commerce
 
+Web: https://desafio-e-commerce-il2v.vercel.app/
+
 Proyecto de comercio electrónico desarrollado con Next.js (Pages Router), TypeScript y Tailwind CSS, simulando un flujo completo de compra al estilo Mercado Libre / Mercado Pago.
 
 ---
